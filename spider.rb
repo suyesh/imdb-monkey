@@ -7,11 +7,6 @@ person_code = nil
 base_url = "http://www.imdb.com/"
 search_url = "http://www.imdb.com/find?rq=#{search_param}"
 movie_url = "http://www.imdb.com/title/#{movie_code}/"
-person_url = "http://www.imdb.com/name/#{person_code}/"
-
-def find_movie_code(search_param)
-  return "Tom Cruise"
-end
 
 #Find_person_code finds the person code for the imdb url based on the search. First it downcases search param that user inputs.
 #then it adds + in between the name if its longer than two words, for example if user is looking for Tom Cruise, it turns into tom+Cruise
@@ -27,3 +22,13 @@ def find_person_code(search_param)
   person_code = person_url.split("/")[2]
   return person_code
 end
+
+puts "Welcome to IMDB, Which actor are you looking for?"
+user_input = gets.chomp
+person_code = find_person_code(user_input)
+
+person_url = "http://www.imdb.com/name/#{person_code}/"
+
+person_page = Nokogiri::HTML(open(person_url))
+
+puts person_page
