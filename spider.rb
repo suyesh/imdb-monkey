@@ -1,3 +1,8 @@
+=begin
+This Script finds the Average rating and highest/lowest rated movie of an actor's movies
+=end
+
+
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
