@@ -1,19 +1,27 @@
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
+search_param = nil
+movie_code = nil
+person_code = nil
+base_url = "http://www.imdb.com/"
+search_url = "http://www.imdb.com/find?rq=#{search_param}"
+movie_url = "http://www.imdb.com/title/#{movie_code}/"
+person_url = "http://www.imdb.com/name/#{person_code}/"
 
-PAGE_URL = "http://www.imdb.com/"
-page = Nokogiri::HTML(open(PAGE_URL))
+ def find_movie_code(search_param)
+    return "Tom Cruise"
+  end
 
-movie_list =  {}
-movies = page.css("div[class= 'title']").css("a").to_a
-i = 0
+  def find_person_code(search_param)
+    search_param = search_param.downcase
+    search_param = search_param.gsub(" ", "+") if search_param.split.length > 1
+    search_url = "http://www.imdb.com/find?=#{search_param}"
+    page = Nokogiri::HTML(open(search_url))
+    person_url = page.css("div.findSection table.findList td.result_text").css("a")[0]["href"]
+    person_code = person_url.split("/")[2]
+    puts person_code
+  end
 
-while i < movies.length
-  movie_list[movies[i].text] = PAGE_URL + movies[i]["href"]
-  i += 1
-end
-
-movie_list.each do |movie, url|
-  puts "#{movie}--URL: #{url}"
-end
+user_input = gets.chomp
+find_person_code(user_input)
