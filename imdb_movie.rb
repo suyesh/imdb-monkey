@@ -1,4 +1,4 @@
-require 'imdb'
+require_relative 'imdb'
 
 class ImdbMovie < Imdb
 end
