@@ -26,8 +26,10 @@ class ImdbActor < Imdb
 
   def actor_movies
     #returns number of movies
-    movies = actor_page.css
-
+    movies = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
+    movies.each do |movie|
+      puts movie.text
+    end
   end
 
   def actor_upcoming_movies
@@ -38,11 +40,11 @@ class ImdbActor < Imdb
     #returns actor's average movie rating based on all movie ratings
   end
 
-  def actor_lowest_rating
+  def actor_lowest_rated_movie
     #returns actor's lowest movie rating
   end
 
-  def actor_highest_rating
+  def actor_highest_rated_movie
     #returns actor's Highest movie rating
   end
 
