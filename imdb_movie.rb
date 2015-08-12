@@ -1,0 +1,2 @@
+class ImdbMovie < Imdb
+end
