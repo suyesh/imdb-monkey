@@ -1,3 +1,5 @@
+require 'imdb'
+
 class ImdbActor < Imdb
   #Find_person_code finds the person code for the imdb url based on the search. First it downcases search param that user inputs.
   #then it adds + in between the name if its longer than two words, for example if user is looking for Tom Cruise, it turns into tom+Cruise

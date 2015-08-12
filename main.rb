@@ -1,9 +1,8 @@
 =begin
 This Script finds the Average rating and highest/lowest rated movie of an actor's movies
 =end
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
+require 'imdb_movie'
+require 'imdb_actor'
 
 base_url = "http://www.imdb.com/"
 movie_url = "http://www.imdb.com/title/#{movie_code}/"
