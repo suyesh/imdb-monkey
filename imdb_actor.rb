@@ -41,17 +41,22 @@ class ImdbActor < Imdb
   end
 
   def actor_awards_nominated(actor_page)
+    #returns movies actor was nominated for
   end
 
   def actor_awards_won(actor_page)
+    #returns awards actor have won
   end
 
   def actor_produced_movies(actor_page)
+    #returns movies actor have produced
   end
 
   def actor_directed_movies(actor_page)
+    #returns movies actor have directed
   end
 
   def actor_random_trivia(actor_page)
+    #returns random trivia if actor through trivia page
   end
 end
