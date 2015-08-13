@@ -20,7 +20,7 @@ IMDB monkey currently features following
 * Find Awards Actor has won (coming soon)
 * Find Random trivia on Actors (coming soon)
 
-## MOVIES (Comind soon)
+## MOVIES (COMING SOON)
 
 
 
