@@ -26,8 +26,10 @@ class ImdbActor < Imdb
 
   def actor_movies
     #returns number of movies
-    movies = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
-    movies.each do |movie|
+    movie_names = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
+    release_year = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a
+    movies = Hash.new
+    movie_names.each do |movie|  #NEED RO FIX HERE SO IT RETURNS HASH OF MOVIE WITH YEAR OF RELEASE. 
       puts movie.text
     end
   end
