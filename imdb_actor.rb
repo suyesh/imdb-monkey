@@ -5,34 +5,20 @@ class ImdbActor < Imdb
   def initialize(search_param)
     @search_param = search_param.downcase.gsub(" ", "+") if search_param.split.length > 1
   end
-  #Find_person_code finds the person code for the imdb url based on the search. First it downcases search param that user inputs.
-  #then it adds + in between the name if its longer than two words, for example if user is looking for Tom Cruise, it turns into tom+Cruise
-  #then puts the search param in the search url to get result
-  #then nokogiri opens the search url and adds finds the result text in the page.
-  #it then extracts the person code from the href of the result
-  def find_actor_code
-    search_url = "http://www.imdb.com/find?=#{@search_param}"
-    page = Nokogiri::HTML(open(search_url))
-    search_page = page.css("div.findSection table.findList td.result_text").css("a")[0]["href"]
-    actor_code = search_page.split("/")[2]
-    return actor_code
-  end
 
-  def actor_page
-    actor_url = "http://www.imdb.com/name/#{find_actor_code}/"
-    actor_page = Nokogiri::HTML(open(actor_url))
-    return actor_page
-  end
-
-  def actor_movies
+  def actor_movies #returns Movies Hash with movie as Key and Year of release as value of Actors
     #returns number of movies
-    movie_names = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
-    release_year = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a
+    movie_names = movies_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a"))
+    release_year = years_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a)
     movies = Hash.new
-    movie_names.each do |movie|  #NEED RO FIX HERE SO IT RETURNS HASH OF MOVIE WITH YEAR OF RELEASE. 
-      puts movie.text
+    counter = 0
+    while counter < movie_names.length
+      movies[movie_names[counter]] = release_year[counter]
+      counter += 1
     end
+    return movies
   end
+
 
   def actor_upcoming_movies
     #returns actor's upcoming movies
@@ -72,5 +58,37 @@ class ImdbActor < Imdb
 
   def actor_random_trivia
     #returns random trivia if actor through trivia page
+  end
+
+  private
+
+  def find_actor_code
+    search_url = "http://www.imdb.com/find?=#{@search_param}"
+    page = Nokogiri::HTML(open(search_url))
+    search_page = page.css("div.findSection table.findList td.result_text").css("a")[0]["href"]
+    actor_code = search_page.split("/")[2]
+    return actor_code
+  end
+
+  def actor_page
+    actor_url = "http://www.imdb.com/name/#{find_actor_code}/"
+    actor_page = Nokogiri::HTML(open(actor_url))
+    return actor_page
+  end
+
+  def movies_to_array(movies)
+    movies_a = []
+    movies.each do |movie|
+      movies_a << movie.text.lstrip.rstrip
+    end
+    return movies_a
+  end
+
+  def years_to_array(years)
+    years_a = []
+    years.each do |year|
+        years_a << year.text.lstrip.rstrip
+      end
+    return years_a
   end
 end

@@ -14,6 +14,8 @@ user_input = gets.chomp
 
 imdb = ImdbActor.new(user_input)
 
-puts imdb.actor_page
 
-puts imdb.actor_movies
+
+imdb.actor_movies.each do |key, value|
+  puts  "#{key}....#{value}"
+end
