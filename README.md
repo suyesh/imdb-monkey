@@ -1,6 +1,6 @@
 ## Description
 
-The IMDB gem allows you to easy access publicly available data from IMDB.
+The IMDB Monkey  Allows you to scrape data from IMDB. 
 
 ## Features
 
