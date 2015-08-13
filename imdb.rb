@@ -9,7 +9,7 @@ class Imdb
   end
 
   private
-  
+
   def find_actor_code
     search_url = "http://www.imdb.com/find?=#{@search_param}"
     page = Nokogiri::HTML(open(search_url))

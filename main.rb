@@ -12,7 +12,7 @@ puts "Right Now i can only search Actors and their movies with its release year 
 puts "Pretty soon i will be able to do much much more.".rjust(20)
 puts "For now just type the name of the actor you want to search.".rjust(20)
 puts "************************************************************************"
-
+print "Type a Actor's name: "
 user_input = gets.chomp
 
 imdb = ImdbActor.new(user_input)
