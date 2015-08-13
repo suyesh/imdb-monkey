@@ -10,7 +10,7 @@ IMDB monkey currently features following
 
 * Search for list of Actor's movies with years
 * Search for Actor's upcoming movies (coming soon)
-* Calculate average movie rating of any actor based on their total movies (coming soon)
+* Calculate average movie rating of any actor based on their total movies and their respective ratings (coming soon)
 * Find Actor's Highest Rated movie (coming soon)
 * Find Actor's Lowest Rated Movie (coming soon)
 * Find Actor's info (coming soon)
