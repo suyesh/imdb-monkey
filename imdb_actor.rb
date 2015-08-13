@@ -8,8 +8,8 @@ class ImdbActor < Imdb
 
   def actor_movies #returns Movies Hash with movie as Key and Year of release as value of Actors
     #returns number of movies
-    movie_names = movies_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a"))
-    release_year = years_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a)
+    movie_names = actor_movies_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a"))
+    release_year = actor_years_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a)
     movies = Hash.new
     counter = 0
     while counter < movie_names.length
@@ -58,37 +58,5 @@ class ImdbActor < Imdb
 
   def actor_random_trivia
     #returns random trivia if actor through trivia page
-  end
-
-  private
-
-  def find_actor_code
-    search_url = "http://www.imdb.com/find?=#{@search_param}"
-    page = Nokogiri::HTML(open(search_url))
-    search_page = page.css("div.findSection table.findList td.result_text").css("a")[0]["href"]
-    actor_code = search_page.split("/")[2]
-    return actor_code
-  end
-
-  def actor_page
-    actor_url = "http://www.imdb.com/name/#{find_actor_code}/"
-    actor_page = Nokogiri::HTML(open(actor_url))
-    return actor_page
-  end
-
-  def movies_to_array(movies)
-    movies_a = []
-    movies.each do |movie|
-      movies_a << movie.text.lstrip.rstrip
-    end
-    return movies_a
-  end
-
-  def years_to_array(years)
-    years_a = []
-    years.each do |year|
-        years_a << year.text.lstrip.rstrip
-      end
-    return years_a
   end
 end
