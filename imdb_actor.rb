@@ -2,10 +2,6 @@ require_relative 'imdb'
 
 class ImdbActor < Imdb
 
-  def initialize(search_param)
-    @search_param = search_param.downcase.gsub(" ", "+") if search_param.split.length > 1
-  end
-
   def actor_movies #returns Movies Hash with movie as Key and Year of release as value of Actors
     movie_names = actor_movies_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a"))
     release_year = actor_years_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a)

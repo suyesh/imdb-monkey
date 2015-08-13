@@ -3,7 +3,13 @@ require 'nokogiri'
 require 'open-uri'
 
 class Imdb
+
+  def initialize(search_param)
+    @search_param = search_param.downcase.gsub(" ", "+") if search_param.split.length > 1
+  end
+
   private
+  
   def find_actor_code
     search_url = "http://www.imdb.com/find?=#{@search_param}"
     page = Nokogiri::HTML(open(search_url))
