@@ -45,8 +45,8 @@
 <a id="actors" class="anchor" href="#actors" aria-hidden="true"><span class="octicon octicon-link"></span></a>ACTORS</h2>
 
 <ul>
-<li>Search for list of Actor's movies with years</li>
-<li>Search for Actor's upcoming movies (coming soon)</li>
+<li>Search for list of Actor's movies with years (Working)</li>
+<li>Search for Actor's upcoming movies (working)</li>
 <li>Calculate average movie rating of any actor based on their total movies and their respective ratings (coming soon)</li>
 <li>Find Actor's Highest Rated movie (coming soon)</li>
 <li>Find Actor's Lowest Rated Movie (coming soon)</li>
@@ -73,6 +73,11 @@ i.actor_movies
 #=&gt; Will return hash with movie as key and year of release as values like shown below. The movies that dont have dates will be empty string.
 
 {"Mena"=&gt;"2017", "Jack Reacher 2"=&gt;"", "Mission: Impossible 6"=&gt;"", "Top Gun 2"=&gt;"", "Mission: Impossible - Rogue Nation"=&gt;"2015", "Edge of Tomorrow"=&gt;"2014",       "Oblivion"=&gt;"2013/I", "Jack Reacher"=&gt;"2012", "Rock of Ages"=&gt;"2012", "Mission: Impossible - Ghost Protocol"=&gt;"2011", "Knight and Day"=&gt;"2010", "Valkyrie"=&gt;"2008", "Tropic Thunder"=&gt;"2008", "Lions for Lambs"=&gt;"2007", "Mission: Impossible III"=&gt;"2006", "War of the Worlds"=&gt;"2005", "Collateral"=&gt;"2004", "The Last Samurai"=&gt;"2003", "Minority Report"=&gt;"2002", "Vanilla Sky"=&gt;"2001", "Mission: Impossible II"=&gt;"2000", "Magnolia"=&gt;"1999", "Eyes Wide Shut"=&gt;"1999", "Jerry Maguire"=&gt;"1996", "Mission: Impossible"=&gt;"1996", "Interview with the Vampire: The Vampire Chronicles"=&gt;"1994", "The Firm"=&gt;"1993", "A Few Good Men"=&gt;"1992", "Far and Away"=&gt;"1992", "Days of Thunder"=&gt;"1990", "Born on the Fourth of July"=&gt;"1989", "Rain Man"=&gt;"1988", "Cocktail"=&gt;"1988", "The Color of Money"=&gt;"1986", "Top Gun"=&gt;"1986", "Legend"=&gt;"1985", "All the Right Moves"=&gt;"1983", "Risky Business"=&gt;"1983", "Losin' It"=&gt;"1983", "The Outsiders"=&gt;"1983", "Taps"=&gt;"1981", "Endless Love"=&gt;"1981"}
+
+i.actor_upcoming_movies
+#=&gt; Will return Array of upcoming movies of any actors. In "Tom Cruise"'s case it will be
+
+["Mena", "Jack Reacher 2", "Mission: Impossible 6","Top Gun 2"]
 </code></pre>
 
 <h3>
