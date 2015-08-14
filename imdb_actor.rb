@@ -16,7 +16,19 @@ class ImdbActor < Imdb
 
 
   def actor_upcoming_movies
-    #returns actor's upcoming movies
+    #returns Array of actor's upcoming movies
+    movie_title = []
+    movie_names = actor_page.css(".in_production")
+    in_production_codes = []
+    movie_names.each do |movie|
+      in_production_codes << retrieve_production_code(movie["href"])
+    end
+    in_production_codes.each do |code|
+      movie_url = Nokogiri::HTML(open("http://www.imdb.com/title/#{code}/"))
+      movie_title << movie_url.css("td#overview-top").css("h1.header").css("span.itemprop")[0].text
+    end
+    movie_title = movie_title.uniq
+    return movie_title
   end
 
   def actor_average_movie_rating

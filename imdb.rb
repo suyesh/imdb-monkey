@@ -39,4 +39,9 @@ class Imdb
       end
     return years_a
   end
+
+  def retrieve_production_code(production_url)
+    production_url_code = production_url.split("/")[4]
+    return production_url_code
+  end
 end

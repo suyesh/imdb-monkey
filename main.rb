@@ -19,6 +19,4 @@ imdb = ImdbActor.new(user_input)
 
 
 
-imdb.actor_movies.each do |key, value|
-  puts  "#{key}....#{value}"
-end
+ puts imdb.actor_upcoming_movies
