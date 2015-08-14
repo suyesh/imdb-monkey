@@ -10,9 +10,9 @@ IMDB monkey currently features following
 
 ## ACTORS
 
-* Search for list of Actor's movies with years (Working)
-* Search for Actor's upcoming movies (working)
-* Calculate average movie rating of any actor based on their total movies and their respective ratings (coming soon)
+* Search for list of Actor's movies with years (WORKING)
+* Search for Actor's upcoming movies (WORKING)
+* Calculate average movie rating of any actor based on their total movies and their respective ratings (WORKING)
 * Find Actor's Highest Rated movie (coming soon)
 * Find Actor's Lowest Rated Movie (coming soon)
 * Find Actor's info (coming soon)
@@ -41,6 +41,11 @@ IMDB monkey currently features following
     #=> Will return Array of upcoming movies of any actors. In "Tom Cruise"'s case as of (08/13/2015) it will be
 
     ["Mena", "Jack Reacher 2", "Mission: Impossible 6","Top Gun 2"]
+
+    i.actor_average_movie_rating
+    #=> Will fetch all the ratings of all the movies of an actor, totals them and then divides them with number of movies to get average. "Tom cruise" will give you
+
+    => 6.2
 
 ### MOVIES: (COMING SOON)
 

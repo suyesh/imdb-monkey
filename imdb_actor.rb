@@ -32,7 +32,20 @@ class ImdbActor < Imdb
   end
 
   def actor_average_movie_rating
-    #returns actor's average movie rating based on all movie ratings
+    #returns actor's average movie rating based on total of all movie ratings divived my number of movies.
+    movies = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
+    movies_url_code = []
+    movies_score = []
+    movies.each do |movie|
+      movies_url_code << movie["href"].split("/")[2]
+    end
+    while movies_score.length < movies_url_code.length
+      page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      movies_score << page.css("div.titlePageSprite.star-box-giga-star").text.to_f
+    end
+    total_score=  movies_score.reduce(:+)
+    average_score = total_score / movies_url_code.length
+    return average_score.round(1)
   end
 
   def actor_lowest_rated_movie

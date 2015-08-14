@@ -15,10 +15,6 @@ puts "************************************************************************"
 print "Type a Actor's name: "
 user_input = gets.chomp
 
-=begin
 imdb = ImdbActor.new(user_input)
 
-imdb.actor_movies.each do |key, value|
-  puts "#{key}........#{value}"
-end
-=end
+puts imdb.actor_average_movie_rating
