@@ -41,7 +41,7 @@ class Imdb
   end
 
   def retrieve_production_code(production_url)
-    production_url_code = production_url.split("/")[4]
+    production_url_code = production_url.split("/")[4] #i wish there was better way of doing this, this is almost like hack.
     return production_url_code
   end
 end

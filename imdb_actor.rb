@@ -7,7 +7,7 @@ class ImdbActor < Imdb
     release_year = actor_years_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a)
     movies = Hash.new
     counter = 0
-    while counter < movie_names.length
+    while counter < movie_names.length #this loop creates hash of movie with movie name and movie release year
       movies[movie_names[counter]] = release_year[counter]
       counter += 1
     end
@@ -21,13 +21,13 @@ class ImdbActor < Imdb
     movie_names = actor_page.css(".in_production")
     in_production_codes = []
     movie_names.each do |movie|
-      in_production_codes << retrieve_production_code(movie["href"])
+      in_production_codes << retrieve_production_code(movie["href"]) #retrieve_production_code method retrieves movie code from the href
     end
     in_production_codes.each do |code|
       movie_url = Nokogiri::HTML(open("http://www.imdb.com/title/#{code}/"))
       movie_title << movie_url.css("td#overview-top").css("h1.header").css("span.itemprop")[0].text
     end
-    movie_title = movie_title.uniq
+    movie_title = movie_title.uniq #for some reason there was doubles thats why had to do uniq. couldnt figure out why the double movies.
     return movie_title
   end
 
