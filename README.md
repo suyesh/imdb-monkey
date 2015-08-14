@@ -2,6 +2,8 @@
 
 The IMDB Monkey  Allows you to scrape data from IMDB.
 
+NOTE:::: ITS IN VERY INFANCY PHASE. ITS NOT A GEM YET. JUST WORKING ON GETING ALL FUNCTIONS WORKING.
+
 ## Features
 
 IMDB monkey currently features following
