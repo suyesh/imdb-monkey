@@ -43,7 +43,8 @@ IMDB monkey currently features following
     ["Mena", "Jack Reacher 2", "Mission: Impossible 6","Top Gun 2"]
 
     i.actor_average_movie_rating
-    #=> Will fetch all the ratings of all the movies of an actor, totals them and then divides them with number of movies to get average. "Tom cruise" will give you
+    #=> Will fetch all the ratings of all the movies of an actor, totals them and then divides them with number of movies to get average. "Tom cruise" will give you 6.2
+    #=> Note: Running this will take a few minute since it has to go fetch every movies of the actor's and their ratings.
 
     => 6.2
 
