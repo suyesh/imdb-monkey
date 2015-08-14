@@ -44,7 +44,7 @@ IMDB monkey currently features following
 
     i.actor_average_movie_rating
     #=> Will fetch all the ratings of all the movies of an actor, totals them and then divides them with number of movies to get average. "Tom cruise" will give you 6.2
-    #=> Note: Running this will take a few minute since it has to go fetch every movies of the actor's and their ratings.
+    #=> Note: Running this will take a few minute since it has to go fetch every movies of the actor's and their ratings and total it and divide it with the total number of movies.
 
     => 6.2
 
