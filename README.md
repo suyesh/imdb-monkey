@@ -11,7 +11,7 @@ IMDB monkey currently features following
 ## ACTORS
 
 * Search for list of Actor's movies with years (WORKS!)
-* Search for Actor's upcoming movies (WORKING)
+* Search for Actor's upcoming movies (WORKS!)
 * Calculate average movie rating of any actor based on their total movies and their respective ratings (WORKS!)
 * Find Actor's Highest Rated movie (WORKS!)
 * Find Actor's Lowest Rated Movie (WORKS!)
