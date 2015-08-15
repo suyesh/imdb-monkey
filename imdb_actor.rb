@@ -67,6 +67,7 @@ class ImdbActor < Imdb
   end
 
   def actor_movies_with_rating
+    #returns Hash of movies and respective ratings as values
     movies = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
     movies_url_code = []
     movies_score = Hash.new
