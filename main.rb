@@ -3,7 +3,7 @@ This Script finds the Average rating and highest/lowest rated movie of an actor'
 =end
 require_relative 'imdb_movie'
 require_relative 'imdb_actor'
-
+=begin
 base_url = "http://www.imdb.com/"
 #movie_url = "http://www.imdb.com/title/#{movie_code}/"
 #award_page = "http://www.imdb.com/name/#{actor_code}/awards?"
@@ -17,4 +17,5 @@ user_input = gets.chomp
 
 imdb = ImdbActor.new(user_input)
 
-puts imdb.actor_average_movie_rating
+puts imdb.actor_lowest_rated_movie
+=end

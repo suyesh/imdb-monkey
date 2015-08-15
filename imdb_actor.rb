@@ -50,10 +50,52 @@ class ImdbActor < Imdb
 
   def actor_lowest_rated_movie
     #returns actor's lowest movie rating
+    movies = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
+    movies_url_code = []
+    movies_score = Hash.new
+    movies.each do |movie|
+      movies_url_code << movie["href"].split("/")[2]
+    end
+    while movies_score.length < movies_url_code.length
+      page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      movies_score[page.css("h1.header").css("span.itemprop").text] = page.css("div.titlePageSprite.star-box-giga-star").text.to_f
+    end
+    lowest_rated_movie_a = movies_score.select{|k,v| v > 0}.sort_by {|movie, score| score }.first
+    lowest_rated_movie = Hash.new
+    lowest_rated_movie[lowest_rated_movie_a[0]] = lowest_rated_movie_a[1]
+    return lowest_rated_movie
+  end
+
+  def actor_movies_with_rating
+    movies = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
+    movies_url_code = []
+    movies_score = Hash.new
+    movies.each do |movie|
+      movies_url_code << movie["href"].split("/")[2]
+    end
+    while movies_score.length < movies_url_code.length
+      page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      movies_score[page.css("h1.header").css("span.itemprop").text] = page.css("div.titlePageSprite.star-box-giga-star").text.to_f
+    end
+    return movies_score
   end
 
   def actor_highest_rated_movie
     #returns actor's Highest movie rating
+    movies = actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("b a")
+    movies_url_code = []
+    movies_score = Hash.new
+    movies.each do |movie|
+      movies_url_code << movie["href"].split("/")[2]
+    end
+    while movies_score.length < movies_url_code.length
+      page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      movies_score[page.css("h1.header").css("span.itemprop").text] = page.css("div.titlePageSprite.star-box-giga-star").text.to_f
+    end
+    highest_rated_movie_a = movies_score.select{|k,v| v > 0}.sort_by {|movie, score| score }.last
+    highest_rated_movie = Hash.new
+    highest_rated_movie[highest_rated_movie_a[0]] = highest_rated_movie_a[1]
+    return highest_rated_movie
   end
 
   def actor_info
@@ -79,4 +121,5 @@ class ImdbActor < Imdb
   def actor_random_trivia
     #returns random trivia if actor through trivia page
   end
+
 end

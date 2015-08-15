@@ -13,8 +13,9 @@ IMDB monkey currently features following
 * Search for list of Actor's movies with years (WORKING)
 * Search for Actor's upcoming movies (WORKING)
 * Calculate average movie rating of any actor based on their total movies and their respective ratings (WORKING)
-* Find Actor's Highest Rated movie (coming soon)
-* Find Actor's Lowest Rated Movie (coming soon)
+* Find Actor's Highest Rated movie (WORKING)
+* Find Actor's Lowest Rated Movie (WORKING)
+* List all movies of an actor with its Rating (WORKING)
 * Find Actor's info (coming soon)
 * Find Movies Actor has produced (coming soon)
 * Find Movies Actor has directed (coming soon)
@@ -47,6 +48,20 @@ IMDB monkey currently features following
     #=> Note: Running this will take a few minute since it has to go fetch every movies of the actor's and their ratings and total it and divide it with the total number of movies.
 
     => 6.2
+
+    i.actor_lowest_rated_movie
+    #=> Will return a hash with lowest rated movie name as key and rating as value. In case of "Tom Cruise" it returns
+    {"Endless Love" => 4.7}
+
+    i.actor_highest_rated_movie
+    #=> Will return a hash with Highest rated movie name as key and rating as value. In case of "Tom Cruise" it returns
+    {"Rain Man"=> 8.0}
+
+    i.actor_movies_with_rating
+    #=> Will return Hash with actor's movie's name as key and rating as value. In case of "Tom Cruise" it returns
+
+    {"Mena"=>0.0, "Jack Reacher 2"=>0.0, "Mission: Impossible 6"=>0.0, "Top Gun 2"=>0.0, "Mission: Impossible - Rogue Nation"=>7.9, "Edge of Tomorrow"=>7.9, "Oblivion"=>7.0, "Jack Reacher"=>7.0, "Rock of Ages"=>5.9, "Mission: Impossible - Ghost Protocol"=>7.4, "Knight and Day"=>6.3, "Valkyrie"=>7.1, "Tropic Thunder"=>7.0, "Lions for Lambs"=>6.2, "Mission: Impossible III"=>6.9, "War of the Worlds"=>6.5, "Collateral"=>7.6, "The Last Samurai"=>7.7, "Minority Report"=>7.7, "Vanilla Sky"=>6.9, "Mission: Impossible II"=>6.0, "Magnolia"=>8.0, "Eyes Wide Shut"=>7.3, "Jerry Maguire"=>7.3, "Mission: Impossible"=>7.1, "Interview with the Vampire: The Vampire Chronicles"=>7.6, "The Firm"=>6.8, "A Few Good Men"=>7.6, "Far and Away"=>6.5, "Days of Thunder"=>5.9, "Born on the Fourth of July"=>7.2, "Rain Man"=>8.0, "Cocktail"=>5.8, "The Color of Money"=>7.0, "Top Gun"=>6.8, "Legend"=>6.5, "All the Right Moves"=>5.9, "Risky Business"=>6.8, "Losin' It"=>4.8, "The Outsiders"=>7.2, "Taps"=>6.7, "Endless Love"=>4.7}
+
 
 ### MOVIES: (COMING SOON)
 
