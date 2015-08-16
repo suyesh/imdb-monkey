@@ -10,11 +10,23 @@ base_url = "http://www.imdb.com/"
 
 print "Type a Actor's name: "
 user_input = gets.chomp
-
+puts "\n"
 imdb = ImdbActor.new(user_input)
-
-imdb.actor_movies.each {|movie, year| puts "#{movie}.....#{year}"}
-puts "#{user_input}'s upcoming #{imdb.actor_upcoming_movies.length > 1 ? "movies are " : "movie is "} #{imdb.actor_upcoming_movies}"
-puts "Highest rated movie : #{imdb.actor_highest_rated_movie}"
-puts "Lowest rated movie : #{imdb.actor_lowest_rated_movie}"
-puts "#{user_input}'s Average movie rating based on all movies is #{imdb.actor_average_movie_rating}"
+puts "Calculating Average"
+average_rating = imdb.actor_average_movie_rating {|i| print i}
+puts "\n"
+puts "The average rating of #{user_input}'s all movies is #{average_rating}"
+puts "\n"
+puts "Finding Highest Rated Movie"
+highest = imdb.actor_highest_rated_movie {|i| print i}
+puts "\n"
+highest.each do |name, rating|
+  puts "#{user_input}'s Highest rated movie is #{name} with the rating of #{rating}"
+end
+puts "\n"
+puts "Finding Lowest Rated Movie"
+lowest = imdb.actor_lowest_rated_movie {|i| print i}
+puts "\n"
+lowest.each do |name, rating|
+  puts "#{user_input}'s lowest rated movie is #{name} with the rating of #{rating}"
+end

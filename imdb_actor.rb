@@ -7,8 +7,11 @@ class ImdbActor < Imdb
     release_year = actor_years_to_array(actor_page.css("div#filmography").css("div.filmo-category-section")[0].css("span.year_column").to_a)
     movies = Hash.new
     counter = 0
+    i = "*"
     while counter < movie_names.length #this loop creates hash of movie with movie name and movie release year
       movies[movie_names[counter]] = release_year[counter]
+      yield i if block_given?
+      i *= 1
       counter += 1
     end
     return movies
@@ -20,14 +23,17 @@ class ImdbActor < Imdb
     movie_title = []
     movie_names = actor_page.css(".in_production")
     in_production_codes = []
+    i = "*"
     movie_names.each do |movie|
       in_production_codes << retrieve_production_code(movie["href"]) #retrieve_production_code method retrieves movie code from the href
     end
     in_production_codes.each do |code|
       movie_url = Nokogiri::HTML(open("http://www.imdb.com/title/#{code}/"))
+      yield i if block_given?
       movie_title << movie_url.css("td#overview-top").css("h1.header").css("span.itemprop")[0].text
     end
     movie_title = movie_title.uniq #for some reason there was doubles thats why had to do uniq. couldnt figure out why the double movies.
+    i *= 1
     return movie_title
   end
 
@@ -39,8 +45,11 @@ class ImdbActor < Imdb
     movies.each do |movie|
       movies_url_code << movie["href"].split("/")[2]
     end
+    i = "*"
     while movies_score.length < movies_url_code.length
       page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      yield i if block_given?
+      i *= 1
       movies_score << page.css("div.titlePageSprite.star-box-giga-star").text.to_f
     end
     total_score=  movies_score.reduce(:+)
@@ -56,8 +65,11 @@ class ImdbActor < Imdb
     movies.each do |movie|
       movies_url_code << movie["href"].split("/")[2]
     end
+    i = "*"
     while movies_score.length < movies_url_code.length
       page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      yield i if block_given?
+      i *= 1
       movies_score[page.css("h1.header").css("span.itemprop").text] = page.css("div.titlePageSprite.star-box-giga-star").text.to_f
     end
     lowest_rated_movie_a = movies_score.select{|k,v| v > 0}.sort_by {|movie, score| score }.first
@@ -74,8 +86,11 @@ class ImdbActor < Imdb
     movies.each do |movie|
       movies_url_code << movie["href"].split("/")[2]
     end
+    i = "*"
     while movies_score.length < movies_url_code.length
       page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      yield i if block_given?
+      i *= 1
       movies_score[page.css("h1.header").css("span.itemprop").text] = page.css("div.titlePageSprite.star-box-giga-star").text.to_f
     end
     return movies_score
@@ -89,8 +104,11 @@ class ImdbActor < Imdb
     movies.each do |movie|
       movies_url_code << movie["href"].split("/")[2]
     end
+    i = "*"
     while movies_score.length < movies_url_code.length
       page = Nokogiri::HTML(open("http://www.imdb.com/title/#{movies_url_code[movies_score.length]}"))
+      yield i if block_given?
+      i *= 1
       movies_score[page.css("h1.header").css("span.itemprop").text] = page.css("div.titlePageSprite.star-box-giga-star").text.to_f
     end
     highest_rated_movie_a = movies_score.select{|k,v| v > 0}.sort_by {|movie, score| score }.last
