@@ -3,7 +3,7 @@
 The IMDB Monkey  Allows you to scrape data from IMDB.
 
 NOTE:::: ITS IN VERY INFANCY PHASE. ITS NOT A GEM YET. JUST WORKING ON GETING ALL FUNCTIONS WORKING.
-To test the script, Download the files, Unzip and run imdb-monkey.rb
+To test the script, Download the files, Unzip and run imdb-monkey.rb.
 
 ## Features
 
